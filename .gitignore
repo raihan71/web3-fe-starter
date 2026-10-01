@@ -29,3 +29,4 @@ coverage/
 # Local tooling
 .DS_Store
 *.tsbuildinfo
+.react-router/
