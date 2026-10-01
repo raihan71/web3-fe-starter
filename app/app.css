@@ -1,15 +1,260 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Inter", sans-serif;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  min-height: 100%;
+  margin: 0;
+  background: #f3f5f1;
+  color: #1c2724;
+  font-family: "Inter", sans-serif;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+.starter-page {
+  min-height: 100vh;
+  background-image: radial-gradient(#cbd4ce 0.7px, transparent 0.7px);
+  background-size: 19px 19px;
+}
+
+.site-header {
+  height: 76px;
+  padding: 0 clamp(22px, 6vw, 88px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dce2dd;
+  background: rgb(243 245 241 / 88%);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #1c2724;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.wordmark__mark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  background: #c8f169;
+  color: #26351d;
+  font-size: 15px;
+}
+
+.wordmark__light {
+  color: #708078;
+  font-weight: 400;
+}
+
+.docs-link {
+  color: #4b5b54;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.docs-link:hover {
+  color: #1b744f;
+}
+
+.page-content {
+  width: min(100% - 40px, 1040px);
+  margin: 0 auto;
+  padding: clamp(68px, 11vh, 112px) 0 42px;
+}
+
+.intro {
+  max-width: 680px;
+  animation: arrive 500ms ease-out both;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: #527862;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.04;
+  font-weight: 600;
+}
+
+.intro h1 span {
+  color: #708d45;
+}
+
+.intro__copy {
+  max-width: 520px;
+  margin: 22px 0 0;
+  color: #65736c;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.wallet-panel {
+  max-width: 620px;
+  margin-top: 46px;
+  padding: 28px;
+  border: 1px solid #d7dfd8;
+  background: #fff;
+  box-shadow: 0 15px 45px rgb(39 57 43 / 6%);
+  animation: arrive 550ms 90ms ease-out both;
+}
+
+.wallet-panel__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.wallet-panel__heading .eyebrow {
+  margin-bottom: 7px;
+}
+
+.wallet-panel h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.connection-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+  color: #75827b;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.connection-state > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #aab4ad;
+}
+
+.connection-state.is-connected {
+  color: #28754d;
+}
+.connection-state.is-connected > span {
+  background: #56a66d;
+}
+
+.wallet-panel__description {
+  margin: 14px 0 22px;
+  color: #718078;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.wallet-panel__action {
+  min-height: 44px;
+}
+
+.wallet-details {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid #e7ece7;
+}
+
+.wallet-details div {
+  min-width: 0;
+}
+.wallet-details dt {
+  margin-bottom: 7px;
+  color: #87928b;
+  font-size: 11px;
+}
+.wallet-details dd {
+  overflow: hidden;
+  margin: 0;
+  color: #28352e;
+  font-size: 13px;
+  text-overflow: ellipsis;
+}
+
+.stack-note {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  margin-top: 76px;
+  padding-top: 18px;
+  border-top: 1px solid #dce2dd;
+  animation: arrive 600ms 160ms ease-out both;
+}
+
+.stack-note > span {
+  color: #85928a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.stack-note p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  color: #526159;
+  font-size: 12px;
+}
+.stack-note i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #95a58c;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 580px) {
+  .page-content {
+    padding-top: 66px;
+  }
+  .wallet-panel {
+    margin-top: 34px;
+    padding: 22px;
+  }
+  .wallet-panel__heading {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .connection-state {
+    padding-top: 0;
+  }
+  .wallet-details {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stack-note {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 52px;
   }
 }

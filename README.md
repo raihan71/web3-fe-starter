@@ -1,87 +1,61 @@
-# Welcome to React Router!
+# Web3 FE Starter
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A small React Router starter for EVM frontend projects. It demonstrates wallet connection, account and network state, and balance reads using Reown AppKit, Wagmi, and Viem.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Stack
 
-## Features
+- React 19 and React Router 8
+- Reown AppKit with the Wagmi adapter
+- Wagmi and Viem for EVM wallet and contract interactions
+- TanStack Query for async state
+- TypeScript and Tailwind CSS 4
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Setup
 
-## Getting Started
+Install dependencies:
 
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
+```sh
+yarn install
 ```
 
-### Development
+Create a project ID in the [Reown Cloud dashboard](https://cloud.reown.com/) and add it to a local environment file:
 
-Start the development server with HMR:
-
-```bash
-npm run dev
+```sh
+VITE_WALLET_CONNECT_PROJECT_ID=your_project_id
 ```
 
-Your application will be available at `http://localhost:5173`.
+Start the development server:
 
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
+```sh
+yarn dev
 ```
 
-## Deployment
+Open `http://localhost:5173`. Without a valid project ID, the app's wallet modal cannot connect to wallet providers.
 
-### Docker Deployment
+## Example
 
-To build and run using Docker:
+The home route renders the reusable `WalletConnect` component from `app/components/wallet-connect.tsx`. It uses AppKit's button and account/network hooks, plus Wagmi's `useBalance` hook to show the connected wallet's address, network, and native token balance.
 
-```bash
-docker build -t my-app .
+Wallet setup lives in `app/root.tsx`. The starter currently enables Sepolia, Ethereum, and Arbitrum, with Sepolia as the default network. Update the network list and app metadata there to match your project.
 
-# Run the container
-docker run -p 3000:3000 my-app
+## Scripts
+
+```sh
+yarn dev        # Start the development server
+yarn build      # Create a production build
+yarn start      # Serve the production build
+yarn typecheck  # Generate route types and run TypeScript
+yarn lint       # Run ESLint
+yarn test       # Run Vitest
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## Production
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+Build and run with Docker:
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```sh
+docker build -t web3-fe-starter .
+docker run --env VITE_WALLET_CONNECT_PROJECT_ID=your_project_id -p 3000:3000 web3-fe-starter
 ```
 
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Set `VITE_WALLET_CONNECT_PROJECT_ID` in the build environment for deployments that bundle client-side environment values.
