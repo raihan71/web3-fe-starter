@@ -1,4 +1,8 @@
 # Web3 FE Starter
+<p float="left">
+<img width="49%" alt="image" src="https://github.com/user-attachments/assets/2031930a-66d7-44c7-a4d0-07c9ee81c7c2" />
+<img width="49%" alt="image" src="https://github.com/user-attachments/assets/cc830f8d-2e3c-4853-9ec5-3afa8020d21d" />
+</p>
 
 A small React Router starter for EVM frontend projects. It demonstrates wallet connection, account and network state, and balance reads using Reown AppKit, Wagmi, and Viem.
 
