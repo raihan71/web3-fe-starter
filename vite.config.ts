@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 10000,
     sourcemap: false,
-    ssr: true,
+    ssr: false,
     cssCodeSplit: true,
     assetsInlineLimit: 4096,
   },
